@@ -7,15 +7,16 @@ function CreateDeck () {
     return (
         <div>
             <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item">
-                        <Link class="oi oi-home" to="/">  Home</Link>
+                <ol className="breadcrumb">
+                    <li className="breadcrumb-item">
+                        <Link className="oi oi-home" to="/">  Home</Link>
                     </li>
-                    <li class="breadcrumb-item active">
+                    <li className="breadcrumb-item active">
                         Create Deck
                     </li>
                 </ol>
             </nav>
+            <h1>Create Deck</h1>
             <div>
                 <CreateDeckForm />
             </div>

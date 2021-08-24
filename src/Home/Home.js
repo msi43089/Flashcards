@@ -23,9 +23,9 @@ const [decks, setDecks] = useState([]);
  
     return (
         <div>
-            <div class="ml-5">
+            <div className="ml-5">
                 <Link to="/decks/new">
-                    <button class="btn btn-secondary oi oi-plus">  Create Deck </button>
+                    <button className="btn btn-secondary oi oi-plus">  Create Deck </button>
                 </Link> 
             </div>
         <ul>

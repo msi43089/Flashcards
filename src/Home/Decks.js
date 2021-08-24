@@ -15,10 +15,10 @@ function Decks ({deck, clickDelete}) {
     }
 
     return (
-        <li class="mt-3 card">
-            <div class ="card-body">
-                <div class="card-title"> 
-                <span class="float-right text-muted">
+        <li className="mt-3 card">
+            <div className ="card-body">
+                <div className="card-title"> 
+                <span className="float-right text-muted">
                     <p>{deck.cards.length} cards</p>
                 </span>
                 <span>
@@ -26,20 +26,20 @@ function Decks ({deck, clickDelete}) {
                 </span>
                 </div> 
                     
-            <p class="card-text">{deck.description}</p>
+            <p className="card-text">{deck.description}</p>
             <div> 
                 <span> 
-                    <Link to={`/decks/${deck.id}/edit`}>
-                        <button class="btn btn-secondary oi oi-eye" > View</button> 
+                    <Link to={`/decks/${deck.id}`}>
+                        <button className="btn btn-secondary oi oi-eye" > View</button> 
                     </Link> 
                 </span>
                 <span> 
                     <Link to={`/decks/${deck.id}/study`}>
-                        <button class="btn btn-primary oi oi-book mx-3"> Study</button> 
+                        <button className="btn btn-primary oi oi-book mx-3"> Study</button> 
                     </Link> 
                 </span>
                 <span>
-                    <button onClick={handleDelete} class="float-right btn btn-danger oi oi-trash p-2"></button>
+                    <button onClick={handleDelete} className="float-right btn btn-danger oi oi-trash p-2"></button>
                 </span>
             </div>
             </div>

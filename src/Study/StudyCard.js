@@ -48,14 +48,14 @@ function StudyCard ({cards, cardsLength}) {
   
     if(card.frontSide){
         return (
-            <div class="card">
+            <div className="card">
                 <div>
-                    <h3 class="card-title m-3">Card {card.cardNumber + 1} of {cardsLength}</h3>
-                    <p class="card-body">{description}</p>
+                    <h3 className="card-title m-3">Card {card.cardNumber + 1} of {cardsLength}</h3>
+                    <p className="card-body">{description}</p>
                 </div>
                 <div>
                 <span>
-                    <button onClick={handleFlip} class="btn btn-secondary mx-3 mb-3">Flip</button>
+                    <button onClick={handleFlip} className="btn btn-secondary mx-3 mb-3">Flip</button>
                 </span>
                 </div>
             </div>
@@ -63,17 +63,17 @@ function StudyCard ({cards, cardsLength}) {
     }
     else {
         return (
-            <div class="card">
+            <div className="card">
                 <div>
-                    <h3 class="card-title m-3">Card {card.cardNumber + 1} of {cardsLength}</h3>
-                    <p class="card-body">{description}</p>
+                    <h3 className="card-title m-3">Card {card.cardNumber + 1} of {cardsLength}</h3>
+                    <p className="card-body">{description}</p>
                 </div>
                 <div>
                 <span>
-                    <button onClick={handleFlip} class="btn btn-secondary mx-3 mb-3">Flip</button>
+                    <button onClick={handleFlip} className="btn btn-secondary mx-3 mb-3">Flip</button>
                 </span>
                 <span>
-                    <button onClick={handleNext} class="btn btn-primary mb-3">Next</button>
+                    <button onClick={handleNext} className="btn btn-primary mb-3">Next</button>
                 </span>
                 </div>
             </div>

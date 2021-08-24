@@ -5,51 +5,41 @@ import StudyCard from "./StudyCard"
 import NotEnoughCards from "./NotEnoughCards"
 
 function Study () {
-    const initialState = {
-        deckId: null,
-        cards: null,
-        cardsLength: null,
-        name: null}
-    const [deck, setDeck] = useState({});
+    const [deck, setDeck] = useState({cards: []});
     const deckId = useParams().deckId;
 
     useEffect(()=> {
-
+        const abortController = new AbortController();
         async function getDeck () {
-            const response = await readDeck(deckId)
-            setDeck({
-                deckId: response.id,
-                cards: response.cards,
-                cardsLength: response.cards.length,
-                name: response.name});
-        }
+            const response = await readDeck(deckId, abortController.signal)
+            setDeck(response)      
+        }  
         getDeck();
+        return () => abortController.abort()
     }, [deckId])
 
-console.log(deck)
-
- if(deck.cardsLength > 2){
+ if(deck.cards.length > 2){
     return (
         <div>
         <nav aria-label="breadcrumb">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item">
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item">
                 <Link class="oi oi-home" to="/">Home</Link>
             </li>
-            <li class="breadcrumb-item">
-                <Link to={`/decks/${deckId}`} >{deck.name}</Link>
+            <li className="breadcrumb-item">
+                <Link to={`/decks/${deck.id}`} >{deck.name}</Link>
             </li>
-            <li class="breadcrumb-item active">Study</li>
+            <li className="breadcrumb-item active">Study</li>
           </ol>
         </nav>
         <h2>Study: {deck.name}</h2>
-            <StudyCard cards={deck.cards} cardsLength={deck.cardsLength}/>
+            <StudyCard cards={deck.cards} cardsLength={deck.cards.length}/>
         </div>
     )
     }
     else {
         return (
-            <NotEnoughCards cardsLength={deck.cardsLength} deckId={deck.Id}></NotEnoughCards>
+            <NotEnoughCards cardsLength={deck.cards.length} deckId={deck.id}></NotEnoughCards>
         )
     }
 

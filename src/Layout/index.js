@@ -5,6 +5,7 @@ import Home from "../Home/Home";
 import { Route, Router, Switch } from "react-router-dom"
 import Study from "../Study/Study";
 import CreateDeck from "../Create/CreateDeck";
+import ViewDeck from "../Home/ViewDeck";
 
 function Layout() {
   return (
@@ -22,7 +23,10 @@ function Layout() {
             <Route exact path="/decks/new">
               <CreateDeck />
             </Route>
-            <Route >
+            <Route exact path="/decks/:deckId">
+              <ViewDeck />
+              </Route>
+              <Route >
             <NotFound />
             </Route>
         {/* TODO: Implement the screen starting here */}
