@@ -1,6 +1,6 @@
 import react, {useState, useEffect} from "react"
 import { useHistory, useParams } from "react-router-dom"
-import { createDeck, readDeck } from "../utils/api";
+import { createDeck, readDeck, updateDeck } from "../utils/api";
 
 
 function EditDeckForm ({deck}) {
@@ -21,11 +21,11 @@ function handleCancel (event) {
     history.push("/")
 }
 
+
 async function handleSubmit (event) {
     event.preventDefault();
-    //const response = await createDeck(formData);
-    history.push("/")
-  
+    await updateDeck(deck);
+    history.push(`/decks/${deck.id}`)
 }
 
     return (

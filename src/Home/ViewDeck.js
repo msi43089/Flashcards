@@ -1,9 +1,10 @@
 import react, { useState, useEffect } from "react"
-import { readDeck } from "../utils/api";
-import { useParams, Link } from "react-router-dom"
+import { deleteDeck, listDecks, readDeck } from "../utils/api";
+import { useParams, Link, useHistory } from "react-router-dom"
 import Cards from "../Cards/Cards";
 
 function ViewDeck () {
+    const history = useHistory()
     const { deckId } = useParams();
     const [ deck, setDeck] = useState({cards: []})
 
@@ -18,7 +19,20 @@ function ViewDeck () {
     }, [deckId])
 
 
-    console.log(deck)
+    const deleteCard = (id) => {
+        const updatedCards = deck.cards.filter((card)=> id !==card.id)
+        setDeck({...deck,
+        cards: updatedCards})
+    }
+
+    
+async function handleDeleteDeck (id) { 
+    const abortController = new AbortController();
+    if (window.confirm("Delete this deck? You will not be able to recover it.")) {
+        await deleteDeck(id, abortController.signal)
+        history.push("/")
+    }
+}
 
     return (
         <div>
@@ -38,20 +52,20 @@ function ViewDeck () {
             <p>{deck.description}</p>
         </div>
             <Link to={`/decks/${deck.id}/edit`}>
-                <button className="btn btn-secondary oi oi-pencil">Edit</button>
+                <button className="btn btn-secondary oi oi-pencil">  Edit</button>
             </Link>
             <Link to={`/decks/${deck.id}/study`}>
-                <button className="btn btn-primary oi oi-book mx-2">Study</button>
+                <button className="btn btn-primary oi oi-book mx-2">  Study</button>
             </Link>
             <Link to={`/decks/${deck.id}/cards/new`}>
-                <button className="btn btn-primary oi oi-plus" >Add Cards</button>
+                <button className="btn btn-primary oi oi-plus" >  Add Cards</button>
             </Link>
-            <button className="oi oi-trash btn btn-danger" ></button>
+            <button onClick={() => handleDeleteDeck(deckId)} className="float-right oi oi-trash btn btn-danger" ></button>
         </div>
         <h2>Cards</h2>
             <ul>
             {deck.cards.map((card) => (
-            <Cards card={card} />
+            <Cards card={card} deleteCard={deleteCard} />
             ))}
             </ul>
         </div>
