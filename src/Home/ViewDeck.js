@@ -1,10 +1,11 @@
 import react, { useState, useEffect } from "react"
 import { readDeck } from "../utils/api";
 import { useParams, Link } from "react-router-dom"
+import Cards from "../Cards/Cards";
 
 function ViewDeck () {
     const { deckId } = useParams();
-    const [ deck, setDeck] = useState({})
+    const [ deck, setDeck] = useState({cards: []})
 
     useEffect(() => {
         const abortController = new AbortController();
@@ -36,20 +37,22 @@ function ViewDeck () {
             <h3>{deck.name}</h3>
             <p>{deck.description}</p>
         </div>
-            <Link to="/decks/:deckId/edit">
+            <Link to={`/decks/${deck.id}/edit`}>
                 <button className="btn btn-secondary oi oi-pencil">Edit</button>
             </Link>
-            <Link to="/decks/:deckId/study">
+            <Link to={`/decks/${deck.id}/study`}>
                 <button className="btn btn-primary oi oi-book mx-2">Study</button>
             </Link>
-            <Link to="/decks/:deckId/cards/new">
+            <Link to={`/decks/${deck.id}/cards/new`}>
                 <button className="btn btn-primary oi oi-plus" >Add Cards</button>
             </Link>
-            <button className="oi oi-trash btn btn-danger float-right" ></button>
+            <button className="oi oi-trash btn btn-danger" ></button>
         </div>
-            <h2>Cards</h2>
+        <h2>Cards</h2>
             <ul>
-                <Cards />
+            {deck.cards.map((card) => (
+            <Cards card={card} />
+            ))}
             </ul>
         </div>
     )
