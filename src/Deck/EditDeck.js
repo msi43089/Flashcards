@@ -1,17 +1,17 @@
-import react, { useEffect, useState} from "react"
-import { Link, useParams } from "react-router-dom"
+import { useEffect, useState} from "react";
+import { Link, useParams } from "react-router-dom";
 import EditDeckForm from "./EditDeckForm";
 import {readDeck} from "../utils/api";
 
 function EditDeck () {
     const [ deck, setDeck ] = useState({});
     const {deckId} = useParams();
-console.log(deckId)
+
     useEffect(() => {
-    const abortController = new AbortController();
-    async function loadDeck () {
-    const response = await readDeck(deckId, abortController.signal)
-    setDeck(response)
+        const abortController = new AbortController();
+        async function loadDeck () {
+        const response = await readDeck(deckId, abortController.signal)
+        setDeck(response)
     }
     loadDeck();
     return () => abortController.abort();

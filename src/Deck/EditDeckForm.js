@@ -1,6 +1,6 @@
-import react, {useState, useEffect} from "react"
-import { useHistory, useParams } from "react-router-dom"
-import { createDeck, readDeck, updateDeck } from "../utils/api";
+import { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { updateDeck } from "../utils/api";
 
 
 function EditDeckForm ({deck}) {

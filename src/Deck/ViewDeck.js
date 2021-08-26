@@ -1,9 +1,7 @@
-import react, { useState, useEffect } from "react"
-import { deleteDeck, listDecks, readDeck } from "../utils/api";
-import { useParams, Link, useHistory, Switch, Route, useRouteMatch } from "react-router-dom"
+import { useState, useEffect } from "react";
+import { deleteDeck, readDeck } from "../utils/api";
+import { useParams, Link, useHistory, } from "react-router-dom";
 import CardsList from "../Cards/CardsList";
-import Study from "../Study/Study";
-import EditDeck from "./EditDeck";
 
 function ViewDeck () {
     const history = useHistory()

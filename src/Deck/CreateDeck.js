@@ -1,5 +1,4 @@
-import react from "react";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 import CreateDeckForm from "./CreateDeckForm";
 
 function CreateDeck () {

@@ -1,4 +1,3 @@
-import reat from "react";
 import { Link, useParams } from "react-router-dom"
 import { deleteCard } from "../utils/api";
 
