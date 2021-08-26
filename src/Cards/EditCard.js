@@ -1,7 +1,7 @@
 import react from "react"
 
 function EditCard () {
-    return <p>test</p>
+    return <p>test edit</p>
 }
 
 export default EditCard

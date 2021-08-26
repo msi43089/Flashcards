@@ -1,7 +1,7 @@
 import react from "react"
 
-function AddCards () {
-    return <p>test</p>
+function AddCard () {
+    return <p>test add</p>
 }
 
-export default AddCards
+export default AddCard

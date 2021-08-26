@@ -1,7 +1,9 @@
 import react, { useState, useEffect } from "react"
 import { deleteDeck, listDecks, readDeck } from "../utils/api";
-import { useParams, Link, useHistory } from "react-router-dom"
+import { useParams, Link, useHistory, Switch, Route, useRouteMatch } from "react-router-dom"
 import CardsList from "../Cards/CardsList";
+import Study from "../Study/Study";
+import EditDeck from "./EditDeck";
 
 function ViewDeck () {
     const history = useHistory()
@@ -36,10 +38,11 @@ async function handleDeleteDeck (id) {
 
     return (
         <div>
+        <div>
         <nav aria-label="breadcrumb">
           <ol className="breadcrumb">
             <li className="breadcrumb-item">
-                <Link class="oi oi-home" to="/">  Home</Link>
+                <Link className="oi oi-home" to="/">  Home</Link>
             </li>
             <li className="breadcrumb-item active">
                 {deck.name}
@@ -68,6 +71,8 @@ async function handleDeleteDeck (id) {
             <CardsList card={card} deleteCardDeck={deleteCardDeck} />
             ))}
             </ul>
+        </div>
+
         </div>
     )
 }

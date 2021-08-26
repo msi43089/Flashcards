@@ -5,7 +5,6 @@ import { useHistory } from "react-router-dom"
 function StudyCard ({cards, cardsLength}) {
     const history = useHistory();
 
-    //state starts on front of card and at the 0 index
     const initialState = {
         cardNumber: 0,
         frontSide: true,

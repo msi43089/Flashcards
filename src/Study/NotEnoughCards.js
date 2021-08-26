@@ -3,7 +3,6 @@ import { Link } from "react-router-dom"
 
 function NotEnoughCards ({cardsLength, deckId}) {
 
-
     return (
         <div>
         <h3>Not enough cards.</h3>

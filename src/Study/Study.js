@@ -24,7 +24,7 @@ function Study () {
         <nav aria-label="breadcrumb">
           <ol className="breadcrumb">
             <li className="breadcrumb-item">
-                <Link class="oi oi-home" to="/">Home</Link>
+                <Link className="oi oi-home" to="/">Home</Link>
             </li>
             <li className="breadcrumb-item">
                 <Link to={`/decks/${deck.id}`} >{deck.name}</Link>

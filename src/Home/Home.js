@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom"
+import { Link, Switch, Route, useRouteMatch } from "react-router-dom"
 import { listDecks } from "../utils/api";
-import Decks from "./Decks";
+import DecksList from "./DecksList";
+import CreateDeck from "../Deck/CreateDeck";
+import ViewDeck from "../Deck/ViewDeck";
+
 
 function Home () {
 const [decks, setDecks] = useState([]);
@@ -14,7 +17,7 @@ const [decks, setDecks] = useState([]);
         getDecks();
     }, [])
     
-    function clickDelete (id) { 
+    function newDecks (id) { 
         setDecks(decks.filter(deck => deck.id !== id))
     }
  
@@ -27,7 +30,7 @@ const [decks, setDecks] = useState([]);
             </div>
         <ul>
             {decks.map((deck) => (
-            <Decks deck={deck} key={deck.id} clickDelete={clickDelete} />
+            <DecksList deck={deck} key={deck.id} newDecks={newDecks} />
             ))}
         </ul>
         </div>

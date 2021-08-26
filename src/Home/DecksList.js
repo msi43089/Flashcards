@@ -2,13 +2,13 @@ import React from "react"
 import { Link} from "react-router-dom"
 import { deleteDeck } from "../utils/api"
 
-function Decks ({deck, clickDelete}) {
+function DecksList ({deck, newDecks}) {
 
     function handleDelete () {
         if (window.confirm("Delete this deck?")){
             async function deleteDecks() {
                 await deleteDeck(deck.id);
-                clickDelete(deck.id)
+                newDecks(deck.id)
             }
             deleteDecks();
         }
@@ -50,4 +50,4 @@ function Decks ({deck, clickDelete}) {
 
 }
 
-export default Decks
+export default DecksList
