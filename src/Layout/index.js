@@ -4,9 +4,9 @@ import NotFound from "./NotFound";
 import Home from "../Home/Home";
 import { Route, Router, Switch } from "react-router-dom"
 import Study from "../Study/Study";
-import CreateDeck from "../Create/CreateDeck";
+import CreateDeck from "../Deck/CreateDeck";
 import ViewDeck from "../Home/ViewDeck";
-import EditDeck from "../Create/EditDeck";
+import EditDeck from "../Deck/EditDeck";
 
 function Layout() {
   return (

@@ -2,18 +2,14 @@ import reat from "react";
 import { Link } from "react-router-dom"
 import { deleteCard } from "../utils/api";
 
-function Cards ({card, deleteCard}) {
+function CardsList ({card, deleteCardDeck}) {
  
-    //still need to handle delete button
-
-
-
-    async function handleDeleteCard (id) {
-      if (window.confirm("Delete this card? You will not be able to recover it.")) {
-        await deleteCard(id)
-        deleteCard(id)
-      }
+  async function handleDeleteCard (id) {
+    if (window.confirm("Delete this card? You will not be able to recover it.")) {
+      await deleteCard(id)
+      deleteCardDeck(id)
     }
+  }
  
   return (
     <li className="card">
@@ -39,4 +35,4 @@ function Cards ({card, deleteCard}) {
   
 }
 
-export default Cards
+export default CardsList

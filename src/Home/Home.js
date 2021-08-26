@@ -3,12 +3,9 @@ import { Link } from "react-router-dom"
 import { listDecks } from "../utils/api";
 import Decks from "./Decks";
 
-
 function Home () {
 const [decks, setDecks] = useState([]);
 
-//returns an array of the two decks
-//each item in the array is an array of cards
     useEffect(()=> {
         async function getDecks() {
             const response = await listDecks();

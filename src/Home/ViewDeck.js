@@ -1,7 +1,7 @@
 import react, { useState, useEffect } from "react"
 import { deleteDeck, listDecks, readDeck } from "../utils/api";
 import { useParams, Link, useHistory } from "react-router-dom"
-import Cards from "../Cards/Cards";
+import CardsList from "../Cards/CardsList";
 
 function ViewDeck () {
     const history = useHistory()
@@ -19,7 +19,7 @@ function ViewDeck () {
     }, [deckId])
 
 
-    const deleteCard = (id) => {
+    const deleteCardDeck = (id) => {
         const updatedCards = deck.cards.filter((card)=> id !==card.id)
         setDeck({...deck,
         cards: updatedCards})
@@ -65,7 +65,7 @@ async function handleDeleteDeck (id) {
         <h2>Cards</h2>
             <ul>
             {deck.cards.map((card) => (
-            <Cards card={card} deleteCard={deleteCard} />
+            <CardsList card={card} deleteCardDeck={deleteCardDeck} />
             ))}
             </ul>
         </div>
