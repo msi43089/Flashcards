@@ -1,8 +1,6 @@
 import React from "react";
 
-function CardForm ({card}) {
-
-
+function CardForm ({card, handleChange}) {
 
 
     return (
@@ -16,20 +14,20 @@ function CardForm ({card}) {
                 rows="2"
                 className="form-control"
                 value={card.front}
-   
+                onChange={handleChange}
                 placeholder="Front side of card"
             ></textarea>
         </div>
         <div className="form-group">
-        <label htmlFor="back">Back</label>
-        <textarea 
-            id="back"
-            className="form-control"
-            rows="2"
-            name="back"
-            value={card.back}
-
-            placeholder="Back side of card"
+            <label htmlFor="back">Back</label>
+            <textarea 
+                id="back"
+                className="form-control"
+                rows="2"
+                name="back"
+                value={card.back}
+                onChange={handleChange}
+                placeholder="Back side of card"
             ></textarea>
         </div>
     </form>

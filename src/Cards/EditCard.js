@@ -1,11 +1,11 @@
 import { useState, useEffect} from "react"
 import CardForm from "./CardForm";
-import { Link, useParams } from "react-router-dom"
-import { readCard } from "../utils/api";
+import { Link, useParams, useHistory } from "react-router-dom"
+import { readCard, updateCard } from "../utils/api";
 
 
 function EditCard ({deck}) { 
-
+    const history = useHistory()
     const [ card, setCard ] = useState({front: "", back: ""})
     const { cardId } = useParams() 
 
@@ -19,6 +19,18 @@ function EditCard ({deck}) {
         loadCard();
         return () => abortController.abort();
     }, [cardId])
+    
+
+    function handleChange ({target}) {
+        setCard({...card,
+        [target.name]: target.value})
+    }
+
+    async function handleSubmit (event) {
+        event.preventDefault();
+        await updateCard(card);
+        history.push(`/decks/${deck.id}`)
+    }
     
 
     return (
@@ -38,11 +50,11 @@ function EditCard ({deck}) {
             </nav>
             <h3>Edit Card</h3>
             <div>
-                <CardForm card={card} deck={deck} />
+                <CardForm handleChange={handleChange} card={card} deck={deck} />
             </div>
             <div>
                 <button  type="cancel" className="btn btn-secondary mr-2">Cancel</button>
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <button onClick={handleSubmit} type="submit" className="btn btn-primary">Submit</button>
         </div>
         </div>
         )

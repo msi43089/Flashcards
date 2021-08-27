@@ -1,33 +1,5 @@
-import {useState} from "react";
-import { useHistory } from "react-router-dom";
-import { createDeck } from "../utils/api";
 
-
-function CreateDeckForm () {
-
-const history = useHistory();
-const initialState = {
-    name: "",
-    description: ""
-}
-const [ formData, setFormData] = useState({...initialState})
-
-function handleChange ({target}) {
-    setFormData({...formData,
-    [target.name]: target.value})
-}
-
-function handleCancel (event) {
-    event.preventDefault();
-    history.push("/")
-}
-
-async function handleSubmit (event) {
-    event.preventDefault();
-    const response = await createDeck(formData);
-    history.push(`/decks/${response.id}`)
-  
-}
+function DeckForm ({handleCancel, handleChange, handleSubmit, deck}) {
 
     return (
         <form>
@@ -39,7 +11,7 @@ async function handleSubmit (event) {
                     name="name" 
                     type="text" 
                     className="form-control"
-                    value={formData.name}
+                    value={deck.name}
                     onChange={handleChange}
                     placeholder="Deck Name"
                 ></input>
@@ -51,7 +23,7 @@ async function handleSubmit (event) {
                 className="form-control"
                 rows="3"
                 name="description"
-                value={formData.description}
+                value={deck.description}
                 onChange={handleChange}
                 placeholder="Brief description of the deck"
                 ></textarea>
@@ -62,7 +34,9 @@ async function handleSubmit (event) {
             </div>
         </form>
     )
+    
+  
 
 }
 
-export default CreateDeckForm
+export default DeckForm

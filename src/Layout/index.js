@@ -4,7 +4,7 @@ import NotFound from "./NotFound";
 import Home from "../Home/Home";
 import { Route, Switch } from "react-router-dom"
 import Deck from "../Deck/index";
-import CreateDeck from "../Deck/CreateDeck";
+import AddDeck from "../Deck/AddDeck";
 
 
 function Layout() {
@@ -17,7 +17,7 @@ function Layout() {
               <Home />
             </Route>
             <Route exact path="/decks/new">
-              <CreateDeck />
+              <AddDeck />
             </Route>
             <Route path="/decks/:deckId">
               <Deck />

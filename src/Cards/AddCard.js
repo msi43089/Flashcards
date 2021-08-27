@@ -1,9 +1,24 @@
 import { useState } from "react"
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { createCard } from "../utils/api";
 import CardForm from "./CardForm";
 
 function AddCard ({deck}) {
+    const history = useHistory()
     const [card, setCard] = useState({front: "", back: ""});
+
+    function handleChange ({target}) {
+        setCard({...card,
+        [target.name]: target.value})
+    }
+    
+    async function handleSave (event) {
+        event.preventDefault();
+        await createCard(deck.id, card);
+        history.push(`/decks/${deck.id}`)
+
+    }
+    
 
     return (
         <div>
@@ -22,11 +37,13 @@ function AddCard ({deck}) {
             </nav>
             <h3>{deck.name}: Add Card</h3>
             <div>
-                <CardForm card={card}/>
+                <CardForm handleChange={handleChange} card={card}/>
             </div>
             <div>
-                <button  type="cancel" className="btn btn-secondary mr-2">Done</button>
-                <button type="submit" className="btn btn-primary">Save</button>
+                <Link to={`/decks/${deck.id}`}>
+                    <button className="btn btn-secondary mr-2">Done</button>
+                </Link>
+                <button onClick={handleSave} type="submit" className="btn btn-primary">Save</button>
         </div>
         </div>
         )

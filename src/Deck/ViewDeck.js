@@ -64,9 +64,9 @@ async function handleDeleteDeck (id) {
             <button onClick={() => handleDeleteDeck(deckId)} className="float-right oi oi-trash btn btn-danger" ></button>
         </div>
         <h2>Cards</h2>
-            <ul>
+            <ul className="pl-0">
             {deck.cards.map((card) => (
-            <CardsList card={card} deleteCardDeck={deleteCardDeck} />
+            <CardsList key={card.id} card={card} deleteCardDeck={deleteCardDeck} />
             ))}
             </ul>
         </div>

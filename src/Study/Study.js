@@ -39,7 +39,21 @@ function Study () {
     }
     else {
         return (
+            <div>
+            <nav aria-label="breadcrumb">
+            <ol className="breadcrumb">
+              <li className="breadcrumb-item">
+                  <Link className="oi oi-home" to="/">Home</Link>
+              </li>
+              <li className="breadcrumb-item">
+                  <Link to={`/decks/${deck.id}`} >{deck.name}</Link>
+              </li>
+              <li className="breadcrumb-item active">Study</li>
+            </ol>
+          </nav>
+          <h2>Study: {deck.name}</h2>
             <NotEnoughCards cardsLength={deck.cards.length} deckId={deck.id}></NotEnoughCards>
+        </div>
         )
     }
 
