@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom";
 import { deleteCard } from "../utils/api";
 
 function CardsList ({card, deleteCardDeck}) {
@@ -36,4 +36,4 @@ function CardsList ({card, deleteCardDeck}) {
   
 }
 
-export default CardsList
+export default CardsList;

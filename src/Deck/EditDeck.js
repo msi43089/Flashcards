@@ -4,7 +4,7 @@ import DeckForm from "./DeckForm";
 import { readDeck, updateDeck } from "../utils/api";
 
 function EditDeck () {
-    const [ deck, setDeck ] = useState({});
+    const [ deck, setDeck ] = useState({name: "", description: ""});
     const {deckId} = useParams();
     const history = useHistory();
 
@@ -18,23 +18,19 @@ function EditDeck () {
     return () => abortController.abort();
 }, [deckId])
     
-    function handleChange ({target}) {
-        setDeck({...deck,
-        [target.name]: target.value})
-    }
-    
-    function handleCancel (event) {
-        event.preventDefault();
-        history.push("/")
-    }
-    
     async function handleSubmit (event) {
         event.preventDefault();
         await updateDeck(deck);
         history.push(`/decks/${deck.id}`)
     }
 
+    function handleChange ({target}) {
+        setDeck({...deck,
+        [target.name]: target.value})
+    }
 
+
+  
     return (
         <div>
             <div>
@@ -53,7 +49,7 @@ function EditDeck () {
                 </nav>
             <h1>Edit Deck</h1>
             <div>
-                <DeckForm handleCancel={handleCancel} handleChange={handleChange} handleSubmit={handleSubmit} deck={deck}/>
+                <DeckForm history={history} handleChange={handleChange} handleSubmit={handleSubmit} deck={deck}/>
             </div>
         </div>
     </div>
@@ -63,4 +59,4 @@ function EditDeck () {
 
 
 
-export default EditDeck
+export default EditDeck;

@@ -1,5 +1,9 @@
+function DeckForm ({history, handleChange, handleSubmit, deck}) {
 
-function DeckForm ({handleCancel, handleChange, handleSubmit, deck}) {
+    function handleCancel (event) {
+        event.preventDefault();
+        history.push("/")
+    }
 
     return (
         <form>
@@ -39,4 +43,4 @@ function DeckForm ({handleCancel, handleChange, handleSubmit, deck}) {
 
 }
 
-export default DeckForm
+export default DeckForm;

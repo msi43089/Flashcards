@@ -1,6 +1,6 @@
-import React from "react"
-import { Link} from "react-router-dom"
-import { deleteDeck } from "../utils/api"
+import React from "react";
+import { Link} from "react-router-dom";
+import { deleteDeck } from "../utils/api";
 
 function DecksList ({deck, newDecks}) {
 
@@ -50,4 +50,4 @@ function DecksList ({deck, newDecks}) {
 
 }
 
-export default DecksList
+export default DecksList;

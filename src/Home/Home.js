@@ -3,10 +3,9 @@ import { Link } from "react-router-dom";
 import { listDecks } from "../utils/api";
 import DecksList from "./DecksList";
 
-
-
 function Home () {
-const [decks, setDecks] = useState([]);
+
+    const [decks, setDecks] = useState([]);
 
     useEffect(()=> {
         async function getDecks() {
@@ -36,4 +35,4 @@ const [decks, setDecks] = useState([]);
     )
 }
 
-    export default Home
+    export default Home;

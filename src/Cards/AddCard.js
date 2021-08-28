@@ -1,10 +1,10 @@
-import { useState } from "react"
+import { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { createCard } from "../utils/api";
 import CardForm from "./CardForm";
 
 function AddCard ({deck}) {
-    const history = useHistory()
+    const history = useHistory();
     const [card, setCard] = useState({front: "", back: ""});
 
     function handleChange ({target}) {
@@ -19,7 +19,6 @@ function AddCard ({deck}) {
 
     }
     
-
     return (
         <div>
             <nav aria-label="breadcrumb">
@@ -44,9 +43,9 @@ function AddCard ({deck}) {
                     <button className="btn btn-secondary mr-2">Done</button>
                 </Link>
                 <button onClick={handleSave} type="submit" className="btn btn-primary">Save</button>
-        </div>
+            </div>
         </div>
         )
 }
 
-export default AddCard
+export default AddCard;

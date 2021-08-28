@@ -1,8 +1,8 @@
-import React, {useState, useEffect } from "react"
-import { Link, useParams } from "react-router-dom"
-import { readDeck } from "../utils/api"
-import StudyCard from "./StudyCard"
-import NotEnoughCards from "./NotEnoughCards"
+import React, {useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
+import { readDeck } from "../utils/api";
+import StudyCard from "./StudyCard";
+import NotEnoughCards from "./NotEnoughCards";
 
 function Study () {
     const [deck, setDeck] = useState({cards: []});
@@ -15,9 +15,19 @@ function Study () {
             setDeck(response)      
         }  
         getDeck();
-        return () => abortController.abort()
+        return () => abortController.abort();
     }, [deckId])
 
+
+    if (!deck.id){
+        return (
+            <div className="d-flex justify-content-center">
+                <div className="spinner-border" role="status">
+                    <span className="sr-only">Loading...</span>
+                </div>
+            </div>
+        )
+    }
  if(deck.cards.length > 2){
     return (
         <div>
@@ -59,4 +69,4 @@ function Study () {
 
 }
 
-export default Study
+export default Study;

@@ -1,5 +1,5 @@
-import React from "react"
-import { Link } from "react-router-dom"
+import React from "react";
+import { Link } from "react-router-dom";
 
 function NotEnoughCards ({cardsLength, deckId}) {
 
@@ -14,4 +14,4 @@ function NotEnoughCards ({cardsLength, deckId}) {
     )
 }
 
-export default NotEnoughCards
+export default NotEnoughCards;

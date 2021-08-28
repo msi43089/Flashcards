@@ -28,4 +28,4 @@ const {path} = useRouteMatch();
     )
 }
 
-export default Deck
+export default Deck;

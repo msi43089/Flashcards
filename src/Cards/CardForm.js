@@ -2,7 +2,6 @@ import React from "react";
 
 function CardForm ({card, handleChange}) {
 
-
     return (
         <form>
         <div className="form-group">
@@ -34,4 +33,4 @@ function CardForm ({card, handleChange}) {
     )
 }
 
-export default CardForm
+export default CardForm;

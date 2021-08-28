@@ -1,8 +1,9 @@
-import { useState } from "react"
-import { useHistory } from "react-router-dom"
+import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 
 function StudyCard ({cards, cardsLength}) {
+    
     const history = useHistory();
 
     const initialState = {
@@ -11,8 +12,7 @@ function StudyCard ({cards, cardsLength}) {
     };
     const [card, setCard] = useState({...initialState});
 
-    //if not last card in array. reset side state and increase card # by 1
-    //if last card - prompt alert
+  
     function handleNext () {
         if(card.cardNumber + 1 === cardsLength) {
             if(window.confirm("Restart cards? Click 'cancel' to return to the home page.")){
@@ -24,13 +24,13 @@ function StudyCard ({cards, cardsLength}) {
         }
         else {
             setCard({
-                ...initialState,
-                cardNumber: card.cardNumber + 1
+                ...card,
+                cardNumber: card.cardNumber + 1,
+                frontSide: true
             })
         }
     }
 
-    //change side of card showing
     function handleFlip () {
         if(card.frontSide){
             setCard({...card,
@@ -42,7 +42,7 @@ function StudyCard ({cards, cardsLength}) {
         }
     }
 
-    //shows front of card if frontSide state is true - back if not
+  
    let description = card.frontSide ? cards[card.cardNumber].front : cards[card.cardNumber].back
   
     if(card.frontSide){
@@ -82,4 +82,4 @@ function StudyCard ({cards, cardsLength}) {
 
 }
 
-export default StudyCard
+export default StudyCard;

@@ -75,4 +75,4 @@ async function handleDeleteDeck (id) {
     )
 }
 
-export default ViewDeck
+export default ViewDeck;

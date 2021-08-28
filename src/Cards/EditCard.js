@@ -32,7 +32,15 @@ function EditCard ({deck}) {
         history.push(`/decks/${deck.id}`)
     }
     
-
+if(!card.id) {
+    return (
+        <div className="d-flex justify-content-center">
+            <div className="spinner-border" role="status">
+                <span className="sr-only">Loading...</span>
+            </div>
+        </div>
+    )
+}
     return (
         <div>
             <nav aria-label="breadcrumb">
@@ -60,4 +68,4 @@ function EditCard ({deck}) {
         )
 }
 
-export default EditCard
+export default EditCard;
