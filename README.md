@@ -12,5 +12,7 @@ The user can then choose a deck to study and flashcards will appear one by one, 
 
 ### How to Run Locally:
 * Clone the repository
-* Run npm install
-* Npm start
+```
+npm install
+npm start
+```
